@@ -36,10 +36,14 @@
                         </p>
                     </div>
                 </tr>
-                <tr>&nbsp;  
+                <tr>&nbsp; </tr>
                 <tr>
                     <button type="button" class="btn btn_light_green btn-block btn-lg" data-toggle="modal" data-target="#send_email">메일 발송</button>
                 </tr>
+                
+                <form action="<%= contextPath %>/veriNum.me" method="post" id="pwdForm">
+                	<input type="hidden" id="userMail" name="userMail" value="<%= m.getEmail() %>">
+                </form>
                 
                 <!-- 메일 발송 모달창 -->
                 <div class="modal fade" id="send_email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,7 +63,7 @@
 			                        
 			                        <script>
 			                        	function next(){
-			                        		location.href = "<%= contextPath %>/veriNum.me";
+			                        		$("#pwdForm").submit();
 			                        	}
 			                        </script>
 			                        

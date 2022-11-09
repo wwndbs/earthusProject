@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String strNum = (String)request.getAttribute("strNum");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +25,7 @@
                 <tr>
                     <br>
                     <input type="text" placeholder="인증번호 입력" name="ranNum" id="ranNum">
+                    <input type="hidden" name="eriNum" id="veriNum" value="<%= strNum %>">
                     <div id="outputRan"></div>
                 </tr>
                 
@@ -35,12 +39,12 @@
                     <script>
                     	$(document).ready(function(){
                     		$("#nextBtn").click(function(){
-                    			if($("#ranNum").val() == ""){	// 빈 문자열이면 인증번호 틀린거
+                    			if($("#ranNum").val() != $("#veriNum").val()){	// 인증번호 불일치하는 경우
                     				$("#outputRan").html('<p style="color:red; padding-bottom:10px;" align="left">인증번호가 틀렸습니다. 다시 입력해주세요.</p>');
                     				$("#nextBtn").removeAttr("data-toggle");
                     				$("#nextBtn").removeAttr("data-target");
                     			
-                    			} else{		// 아무 숫자 입력하면 통과
+                    			} else{		// 인증번호 일치
                     				$("#outputRan").empty();
                     				$("#nextBtn").attr("data-toggle", "modal");
                     				$("#nextBtn").attr("data-target", "#auth_email");
