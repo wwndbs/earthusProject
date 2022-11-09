@@ -123,7 +123,11 @@
 			                            txt += "<td>" + newList[i].point + "</td>";
 			                            txt += "<td>" + newList[i].userStatus + "</td>";
 			                            txt += '<td class="btn_left">';
-			                            txt += '<button type="button" class="btn-sm btn_black" data-toggle="modal" data-target="#adUpdateMember">수정</button></td></tr>';
+			                            if( newList[i].userStatus == "N"){
+			                            	txt += '<button type="button" class="btn-sm btn_black" onclick="back(' + newList[i].userNo + ');">복구</button>';
+			                            } else{
+			                            	txt += '<button type="button" class="btn-sm btn_gray" disabled>복구</button>';
+			                            }
 			                            
 	            					}
 	                				
@@ -180,10 +184,6 @@
 		                    </thead>
 		                    <tbody id="mBody">
 		                    
-		                    <% for(Member m : list) { %>
-		                    	<% System.out.println(m.getUserNo()); %>
-		                    <% } %>
-		                    
 		                    <!-- 전체  -->
                 			<% for(Member m : list) { %>
 		                        <!-- 값은 다 DB와 연결될 것 -->
@@ -221,17 +221,35 @@
 		                            <td><%= m.getPoint() %></td>
 		                            <td><%= m.getUserStatus() %></td>
 		                            <td class="btn_left">
-		                                <button type="button" class="btn-sm btn_black">수정</button>
+		                            	<% if( m.getUserStatus().equals("N")){ %>
+		                            		<button type="button" class="btn-sm btn_black" onclick="back(<%= m.getUserNo() %>);">복구</button>
+		                            	<%} else{ %>
+		                            		<button type="button" class="btn-sm btn_gray" disabled>복구</button>
+		                            	<% } %>
 		                            </td>
 		                        </tr>
 		                      <% } %>
 		                      
 		                      <script>
-		                      	// 회원 수정
-		                      	$(".M_member_table>tbody>tr").on("click", "td:last-child", function() {
-			            			console.log( $(this).parent().children().eq(1).text() );
-			            			location.href = "<%= contextPath %>/adUpdateForm.me?mNo=" + $(this).parent().children().eq(1).text();
-			            		})
+			                      	// 회원 상태 복구
+			                      	function back(no){
+			                      		$.ajax({
+			                      			url:"<%= contextPath %>/adUpdate.me",
+			                      			data:{
+			                      				mNo:no
+			                      			},
+			                      			success:function(result){
+			                      				if(result > 0){
+			                      					location.reload();
+			                      				} else{
+			                      					alert("회원 상태 수정에 실패하였습니다.");
+			                      				}
+			                      			}, error:function(){
+			                      				console.log("ajax 상태 수정 실패");
+			                      			}
+			                      				
+			                      		});
+			                      	}
 		                      
 		                      </script>
 		                        

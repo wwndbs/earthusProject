@@ -32,41 +32,17 @@ public class AdMemberUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 인코딩
-		request.setCharacterEncoding("UTF-8");
+		int no = Integer.parseInt(request.getParameter("mNo"));
 		
-		// 전달값
-		String mNo = request.getParameter("mNo");
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("inputPwd");
-		String userName = request.getParameter("userName");
-		String email = request.getParameter("inputEmail");
-		String phone = request.getParameter("inputPhone");
-		String zonecode = request.getParameter("zonecode");
-		String address = request.getParameter("address");
-		String addrExtra = request.getParameter("addr_extra");
-		String addrDetail = request.getParameter("addr_detail");
+		Member m = new MemberService().selectMember(no);
+		String id = m.getUserId();
+		id = id.substring(0, 5);
+
+		int result = new MemberService().adUpdateMember(no, id);
 		
-		Member m = new Member(userId, userPwd, userName, email, phone, zonecode, address, addrExtra, addrDetail);
-		
-		int result = new MemberService().adUpdateMember(mNo, m);
-		
-		HttpSession session = request.getSession();
-		Member loginUser = (Member)session.getAttribute("loginUser");
-		
-		if(loginUser == null) {
-			response.sendRedirect(request.getContextPath() + "/goLogin.me");
-		} else {
-			if(result > 0) {
-				response.sendRedirect(request.getContextPath() + "/adList.me?mpage=1");
-			} else {
-				session.setAttribute("modalMsg", "회원 수정에 실패하였습니다.-관-");
-				request.getRequestDispatcher("/views/common/errorModal.jsp").forward(request, response);
-			}
+		if(result > 0) {
+			response.getWriter().print(result);
 		}
-		
-		
-		
 	}
 
 	/**

@@ -541,23 +541,23 @@ public class MemberDao {
 		return m;
 	}
 	
-	public int adUpdateMember(Connection conn, String a, Member m) {
+	public int adUpdateMember(Connection conn, int no, String id) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		
 		String sql = prop.getProperty("adUpdateMember");
+		System.out.println(id);
+		// 동적 sql문
+		if(id.equals("admin")) {
+			sql += "SET USER_STATUS = 'M'";	// 관리자의 경우
+		} else {
+			sql += "SET USER_STATUS = 'Y'";	// 회원의 경우
+		}
+		
+		 sql += "WHERE USER_NO = " + no;
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, m.getUserPwd());
-			pstmt.setString(2, m.getUserName());
-			pstmt.setString(3, m.getEmail());
-			pstmt.setString(4, m.getPhone());
-			pstmt.setString(5, m.getZonecode());
-			pstmt.setString(6, m.getAddress());
-			pstmt.setString(7, m.getAddrExtra());
-			pstmt.setString(8, m.getAddrDetail());
-			pstmt.setString(9, a);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -569,27 +569,4 @@ public class MemberDao {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

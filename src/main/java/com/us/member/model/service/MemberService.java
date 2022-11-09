@@ -162,9 +162,9 @@ public class MemberService {
 		}
 		
 		// 관리자 회원 정보 수정
-		public int adUpdateMember(String a, Member m) {
+		public int adUpdateMember(int no, String id) {
 			Connection conn = getConnection();
-			int result = new MemberDao().adUpdateMember(conn, a, m);
+			int result = new MemberDao().adUpdateMember(conn, no, id);
 			if(result > 0) {
 				commit(conn);
 			} else {
