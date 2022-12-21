@@ -30,20 +30,19 @@
     <!--================ Banner Area =================-->
     <section class="breadcrumb contents_bg">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="breadcrumb_iner">
-                        <div class="breadcrumb_iner_item">
-                            <h2>콘텐츠</h2>
-                            <p>환경을 지키며 궁금한 것들, 어스가 대신 알려드립니다!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="breadcrumb_iner">
+						<div class="breadcrumb_iner_item">
+							<h2>콘텐츠</h2>
+							<p>환경을 지키며 궁금한 것들, 어스가 대신 알려드립니다!</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area padding_top">
         <div class="container">
@@ -79,101 +78,96 @@
                         	<% } %>
                         </td>
                     </tr>
-    
                 </table>
-    
             </div>
             <div class="navigation-top">
                 <div class="d-sm-flex justify-content-between text-center" style="margin-left:2%">
                     <p class="like-info">
-                    
                     	<!-- 좋아요 버튼 -->
                     	<% if(loginUser != null){ %>
-                        <button style="border:none; background:none;" id="btn_like">
-                        	<span class="align-middle">
-	                    	<% if(likeResult == 1) { %>
-	                        	<i class="fas fa-heart"></i>
-							<% } else { %>
-								<i class="far fa-heart"></i>
-							<% } %>
-                        	</span>
-                        </button>
+                        	<button style="border:none; background:none;" id="btn_like">
+                        		<span class="align-middle">
+	                    			<% if(likeResult == 1) { %>
+	                        			<i class="fas fa-heart"></i>
+									<% } else { %>
+										<i class="far fa-heart"></i>
+									<% } %>
+                        		</span>
+                        	</button>
                         <% } else{%>
-                        <button style="border:none; background:none;" onclick="goLogin();">
-                        	<span class="align-middle">
-								<i class="far fa-heart"></i>
-                        	</span>
-                        </button>
+                        	<button style="border:none; background:none;" onclick="goLogin();">
+                        		<span class="align-middle">
+									<i class="far fa-heart"></i>
+                        		</span>
+                        	</button>
                         <% } %>
                         <!-- 좋아요 버튼 끝 -->
-                        
                         <span id="likeCount"><%= c.getCntLike() %></span>명이 좋아합니다
-                    </p>
-                 </div>
-                 <script>
+					</p>
+				</div>
+				<script>
                  	function goLogin(){ // 로그인 하지 않고 좋아요 클릭 시
                  		alert("로그인 후 이용 가능한 서비스입니다.");
                  		if(confirm("로그인 페이지로 이동하시겠습니까?")){
                  			location.href = "<%=contextPath%>/goLogin.me";
                  		}
                  	}
-                 </script>
+				</script>
                  
-                <div class="navigation-area">
-                    <div class="row">                    
+				<div class="navigation-area">
+					<div class="row">                    
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                        <% if( c.getPrevNo() != 0 ) { %>
-                            <div class="thumb">
-                            <a href="<%=contextPath%>/detail.co?no=<%=c.getPrevNo() %>">
-                                <img class="img-fluid" src="<%= contextPath %>/<%= prev.getCntThumbnail() %>" alt="">
-                            </a>
-                            </div>
-                            <div class="arrow">
-                            <a href="#">
-                                <span class="lnr text-white ti-arrow-left"></span>
-                            </a>
-                            </div>
-                            <div class="detials">
-                            <p>이전 콘텐츠</p>
-                            <a href="<%=contextPath%>/detail.co?no=<%=c.getPrevNo() %>">
-                                <h4><%= prev.getCntTitle() %></h4>
-                            </a>
-                            </div>
-                        <% } %>
-                        </div>
+                        	<% if( c.getPrevNo() != 0 ) { %>
+								<div class="thumb">
+                            		<a href="<%=contextPath%>/detail.co?no=<%=c.getPrevNo() %>">
+                                		<img class="img-fluid" src="<%= contextPath %>/<%= prev.getCntThumbnail() %>" alt="">
+                            		</a>
+                            	</div>
+                            	<div class="arrow">
+                            		<a href="#">
+                                		<span class="lnr text-white ti-arrow-left"></span>
+                            		</a>
+                            	</div>
+                            	<div class="detials">
+                            		<p>이전 콘텐츠</p>
+                            		<a href="<%=contextPath%>/detail.co?no=<%=c.getPrevNo() %>">
+                                		<h4><%= prev.getCntTitle() %></h4>
+                            		</a>
+                            	</div>
+							<% } %>
+						</div>
                         <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                             <% if( c.getNextNo() != 0 ) { %>
 	                            <div class="detials">
-	                            <p>다음 콘텐츠</p>
-	                            <a href="<%=contextPath%>/detail.co?no=<%=c.getNextNo()%>">
-	                                <h4><%= next.getCntTitle() %></h4>
-	                            </a>
+	                            	<p>다음 콘텐츠</p>
+	                            	<a href="<%=contextPath%>/detail.co?no=<%=c.getNextNo()%>">
+	                               		<h4><%= next.getCntTitle() %></h4>
+	                           		</a>
 	                            </div>
 	                            <div class="arrow">
-	                            <a href="#">
-	                                <span class="lnr text-white ti-arrow-right"></span>
-	                            </a>
+	                            	<a href="#">
+	                                	<span class="lnr text-white ti-arrow-right"></span>
+	                            	</a>
 	                            </div>
 	                            <div class="thumb">
-	                            <a href="<%=contextPath%>/detail.co?no=<%=c.getNextNo()%>">
-	                                <img class="img-fluid" src="<%= contextPath %>/<%= next.getCntThumbnail() %>" alt="">
-	                            </a>
+	                            	<a href="<%=contextPath%>/detail.co?no=<%=c.getNextNo()%>">
+	                                	<img class="img-fluid" src="<%= contextPath %>/<%= next.getCntThumbnail() %>" alt="">
+	                            	</a>
 	                            </div>
-	                       <% } %>
+	                       	<% } %>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br><br>
     
-            <br><br>
             <div style="width:1140px" align="right">
                 <a href="<%= contextPath %>/list.co?cpage=1" class="btn_list">목록</a>
             </div>
             
-        </div>
-    </section>
+		</div>
+	</section>
     
-    <script>
+	<script>
     	// 로그인 상태에서 좋아요(하트) 아이콘 클릭 시
         $("#btn_like").click(function(){
         	

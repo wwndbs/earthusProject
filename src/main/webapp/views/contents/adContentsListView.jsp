@@ -40,42 +40,41 @@
 	<%@ include file="/views/common/adminMenubar.jsp" %>
 
 	<div id="layoutSidenav">
-       <div id="layoutSidenav_content">
-           <main>
-               <div class="container-fluid px-4">
-                   <br>
-                   <h3 class="mt-4" style="font-weight:bold;">콘텐츠 관리</h3>
-                   <hr><br><br>
+		<div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid px-4"><br>
+					<h3 class="mt-4" style="font-weight:bold;">콘텐츠 관리</h3>
+					<hr><br><br>
                    
-                    <table>
-                        <tr>
-                            <th width="5%" height="50px">
-                               <input type="checkbox" id="checkAll">
-                            </th>
-                            <th width="5%">No.</th>
-                            <th width="55%">제목</th>
-                            <th width="15%">작성일</th>
-                            <th width="10%">조회수</th>
-                            <th width="10%">좋아요 수</th>
-                        </tr>
+					<table>
+						<tr>
+							<th width="5%" height="50px">
+								<input type="checkbox" id="checkAll">
+							</th>
+							<th width="5%">No.</th>
+							<th width="55%">제목</th>
+							<th width="15%">작성일</th>
+							<th width="10%">조회수</th>
+							<th width="10%">좋아요 수</th>
+						</tr>
                         <% if(list.isEmpty()) { %>
                             <tr>
                                 <td colspan="6">존재하는 콘텐츠가 없습니다.</td>
                             </tr>  	
-                        <% } else { %>
-                            <% for(Contents c : list) { %>
-                                <tr class="list-area">
-                                    <td onclick="event.stopPropagation();"> <!-- 해당 td 클릭 시에는 수정 페이지로 이동하지 않게 함-->
-                                        <input type="checkbox" name="check" value="<%= c.getCntNo() %>">
-                                    </td>
-                                    <td><%= c.getCntNo() %></td>
-                                    <td><%= c.getCntTitle() %></td>
-                                    <td><%= c.getCntEnrollDate() %></td>
-                                    <td><%= c.getCntCount() %></td>
-                                    <td><%= c.getCntLike() %></td>
+						<% } else { %>
+							<% for(Contents c : list) { %>
+								<tr class="list-area">
+									<td onclick="event.stopPropagation();"> <!-- 해당 td 클릭 시에는 수정 페이지로 이동하지 않게 함-->
+										<input type="checkbox" name="check" value="<%= c.getCntNo() %>">
+									</td>
+									<td><%= c.getCntNo() %></td>
+									<td><%= c.getCntTitle() %></td>
+									<td><%= c.getCntEnrollDate() %></td>
+									<td><%= c.getCntCount() %></td>
+									<td><%= c.getCntLike() %></td>
                                 </tr>
-                            <% } %>
-                        <% } %>
+							<% } %>
+						<% } %>
                     </table>
 
                     <button class="btn_admin" id="btn_delete" style="float: left; margin-left: 10%;" data-bs-toggle="modal" data-bs-target="#jyModal_noCheck">선택 삭제</button>
@@ -97,18 +96,18 @@
 						<% } %>
 						
 						<% if(currentPage != maxPage) { %>
-			            <button onclick="location.href='<%=contextPath%>/adList.co?cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
+			            	<button onclick="location.href='<%=contextPath%>/adList.co?cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
 			            <% } %>
 			        </div>
 			        <!-- 페이징바 영역 끝 -->
 
-                   <!-- 모달: 게시글 선택 안 했을 경우 -->
+					<!-- 모달: 게시글 선택 안 했을 경우 -->
                     <div class="modal" id="jyModal_noCheck">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                <button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
+                                	<button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body" style="text-align: center;">
@@ -116,7 +115,7 @@
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">확인</button>
+                                	<button type="button" class="btn btn-dark" data-bs-dismiss="modal">확인</button>
                                 </div>
                             </div>
                         </div>
@@ -129,16 +128,16 @@
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                <button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
+                                	<button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body" style="text-align: center;">
-                                정말 삭제하시겠습니까?
+                                	정말 삭제하시겠습니까?
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
-                                <button type="button" class="btn btn-dark" id="realDelete">확인</button>
+                                	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
+                                	<button type="button" class="btn btn-dark" id="realDelete">확인</button>
                                 </div>
                             </div>
                         </div>
@@ -221,10 +220,8 @@
 
 						})
 					</script>
-                    
                </div>
            </main>
-
        </div>
 	</div>
 </body>

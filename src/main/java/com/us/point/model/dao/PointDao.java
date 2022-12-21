@@ -277,9 +277,9 @@ public class PointDao {
 								   rset.getString("point_reason"),
 								   rset.getInt("point_amount"),
 								   rset.getInt("point_balance"),
-								   rset.getDate("point_date"),
 								   rset.getString("user_id"),
-								   rset.getString("user_name")
+								   rset.getString("user_name"),
+								   rset.getString("point_date")
 						));
 			}
 		} catch (SQLException e) {

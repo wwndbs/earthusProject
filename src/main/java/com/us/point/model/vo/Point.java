@@ -15,6 +15,7 @@ public class Point {
 	private int challNo;
 	private String userId;
 	private String userName;
+	private String stringPointDate;
 	
 	public Point() {}
 
@@ -43,6 +44,19 @@ public class Point {
 		this.pointDate = pointDate;
 		this.userId = userId;
 		this.userName = userName;
+	}
+
+	public Point(int pointNo, String pointType, String pointReason, int pointAmount, int pointBalance, String userId,
+			String userName, String stringPointDate) {
+		super();
+		this.pointNo = pointNo;
+		this.pointType = pointType;
+		this.pointReason = pointReason;
+		this.pointAmount = pointAmount;
+		this.pointBalance = pointBalance;
+		this.userId = userId;
+		this.userName = userName;
+		this.stringPointDate = stringPointDate;
 	}
 
 	public int getPointNo() {
@@ -132,7 +146,14 @@ public class Point {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
+	public String getStringPointDate() {
+		return stringPointDate;
+	}
+	
+	public void setStringPointDate(String stringPointDate) {
+		this.stringPointDate = stringPointDate;
+	}
+	
 	@Override
 	public String toString() {
 		return "Point [pointNo=" + pointNo + ", userNo=" + userNo + ", pointType=" + pointType + ", pointReason="

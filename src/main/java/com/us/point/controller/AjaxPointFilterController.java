@@ -40,8 +40,8 @@ public class AjaxPointFilterController extends HttpServlet {
 		String filter = request.getParameter("filter");
 		
 		switch(filter) {
-		case"all": filter = "";
-		case"plus": filter = "AND POINT_TYPE = '적립'";
+		case"all": filter = ""; break;
+		case"plus": filter = "AND POINT_TYPE = '적립'"; break;
 		case"minus": filter = "AND POINT_TYPE = '사용'";
 		}
 		
@@ -70,7 +70,6 @@ public class AjaxPointFilterController extends HttpServlet {
 		
 		response.setContentType("application/json; charset=UTF-8");
 		new Gson().toJson(map, response.getWriter());
-		
 		
 	}
 

@@ -67,116 +67,108 @@
                         <td style="text-align:center">
                             <img src="<%= contextPath %>/<%= at.getFilePath() + at.getChangeName() %>" style="margin:30px 0px">
                         	<% if(ch.getChallContent() != null) { %>
-                        		<p><%= ch.getChallContent() %></p>
-                                <br>
+                        		<p><%= ch.getChallContent() %></p><br>				
                         	<% } %>
                         </td>
                     </tr>
-    
                 </table>
-    
             </div>
-            <div class="navigation-top">
+			<div class="navigation-top">
                 <div class="navigation-area">
                     <div class="row">                    
                         <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                        <% if( ch.getPrevNo() != 0 ) { %>
-                            <div class="thumb">
-                            <a href="<%=contextPath%>/detail.ch?no=<%= ch.getPrevNo() %>">
-                                <img class="img-fluid" src="<%= contextPath %>/<%= prev.getChallThumbnail() %>" alt="">
-                            </a>
-                            </div>
-                            <div class="arrow">
-                            <a href="#">
-                                <span class="lnr text-white ti-arrow-left"></span>
-                            </a>
-                            </div>
-                            <div class="detials">
-                            <p>이전 챌린지</p>
-                            <a href="<%=contextPath%>/detail.ch?no=<%= ch.getPrevNo() %>">
-                                <h4><%= prev.getChallTitle() %></h4>
-                            </a>
-                            </div>
-                        <% } %>
+	                        <% if( ch.getPrevNo() != 0 ) { %>
+	                            <div class="thumb">
+	                            	<a href="<%=contextPath%>/detail.ch?no=<%= ch.getPrevNo() %>">
+	                                	<img class="img-fluid" src="<%= contextPath %>/<%= prev.getChallThumbnail() %>" alt="">
+	                            	</a>
+	                            </div>
+	                            <div class="arrow">
+	                            	<a href="#">
+	                                	<span class="lnr text-white ti-arrow-left"></span>
+	                            	</a>
+	                            </div>
+	                            <div class="detials">
+	                            	<p>이전 챌린지</p>
+	                            	<a href="<%=contextPath%>/detail.ch?no=<%= ch.getPrevNo() %>">
+	                                	<h4><%= prev.getChallTitle() %></h4>
+	                            	</a>0
+	                            </div>
+	                        <% } %>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
                             <% if( ch.getNextNo() != 0 ) { %>
 	                            <div class="detials">
-	                            <p>다음 챌린지</p>
-	                            <a href="<%=contextPath%>/detail.ch?no=<%= ch.getNextNo()%>">
-	                                <h4><%= next.getChallTitle() %></h4>
-	                            </a>
+	                            	<p>다음 챌린지</p>
+	                            	<a href="<%=contextPath%>/detail.ch?no=<%= ch.getNextNo()%>">
+	                                	<h4><%= next.getChallTitle() %></h4>
+	                            	</a>
 	                            </div>
 	                            <div class="arrow">
-	                            <a href="#">
-	                                <span class="lnr text-white ti-arrow-right"></span>
-	                            </a>
+	                            	<a href="#">
+	                                	<span class="lnr text-white ti-arrow-right"></span>
+	                            	</a>
 	                            </div>
 	                            <div class="thumb">
-	                            <a href="<%=contextPath%>/detail.ch?no=<%= ch.getNextNo()%>">
-	                                <img class="img-fluid" src="<%= contextPath %>/<%= next.getChallThumbnail() %>" alt="">
-	                            </a>
+	                            	<a href="<%=contextPath%>/detail.ch?no=<%= ch.getNextNo()%>">
+	                                	<img class="img-fluid" src="<%= contextPath %>/<%= next.getChallThumbnail() %>" alt="">
+	                            	</a>
 	                            </div>
-	                       <% } %>
+                            <% } %>
                         </div>
                     </div>
                 </div>
-            </div>
+			</div>
             
-        <!--댓글 작성 칸 시작-->
-        <div class="comment-form">
-            <h4>댓글 작성</h4>
-            <form class="form-contact comment_form" action="#" id="commentForm">
-                <table>
-                    <tr>
-                    <% if(loginUser == null) { %>
-                        <td width="900px">
-                            <textarea class="form-control" style="white-space:pre;" name="comment" id="cmntContent" cols="30" rows="4"
-                            placeholder="로그인 후 이용 가능한 서비스입니다." readonly></textarea>
-                        </td>
-                        <td width="200px" style="padding-left: 40px;">
-                        	<button class="btn_cmnt" disabled>댓글 등록</button>
-                        </td>
-                    <% } else { %>
-                        <td width="900px">
-                            <textarea class="form-control" name="comment" id="cmntContent" cols="30" rows="4"
-                            placeholder="댓글 내용을 입력해 주세요."></textarea>
-                        </td>
-                        <td width="200px" style="padding-left: 40px;">
-                        	<button type="button" class="btn_cmnt" onclick="insertCmnt();">댓글 등록</button>
-                        </td>
-                    <% } %>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <!-- 댓글 작성 칸 끝 -->
+			<!--댓글 작성 칸 시작-->
+			<div class="comment-form">
+            	<h4>댓글 작성</h4>
+            	<form class="form-contact comment_form" action="#" id="commentForm">
+                	<table>
+                    	<tr>
+                    		<% if(loginUser == null) { %>
+                        		<td width="900px">
+									<textarea class="form-control" style="white-space:pre;" name="comment" id="cmntContent" cols="30" rows="4" placeholder="로그인 후 이용 가능한 서비스입니다." readonly></textarea>
+                        		</td>
+                        		<td width="200px" style="padding-left: 40px;">
+                        			<button class="btn_cmnt" disabled>댓글 등록</button>
+                        		</td>
+                    		<% } else { %>
+                        		<td width="900px">
+                            		<textarea class="form-control" name="comment" id="cmntContent" cols="30" rows="4" placeholder="댓글 내용을 입력해 주세요."></textarea>
+                       			</td>
+                        		<td width="200px" style="padding-left: 40px;">
+                        			<button type="button" class="btn_cmnt" onclick="insertCmnt();">댓글 등록</button>
+                        		</td>
+                    		<% } %>
+                    	</tr>
+                	</table>
+            	</form>
+			</div>
+        	<!-- 댓글 작성 칸 끝 -->
 
-        <!-- 댓글 리스트 시작 -->
-        <div class="comments-area">
-            <h4><span id="cmntCount"><%= ch.getChallCmnt() %></span> 개의 댓글</h4>
+        	<!-- 댓글 리스트 시작 -->
+        	<div class="comments-area">
+            	<h4><span id="cmntCount"><%= ch.getChallCmnt() %></span> 개의 댓글</h4>
 
-            <div id="cmntInsertArea">
+            	<div id="cmntInsertArea">
             	<!-- ajax로 댓글 목록 추가될 자리 -->
-            </div>
+            	</div>
         
-			<!-- 페이징바 영역 -->
-			<nav class="blog-pagination justify-content-center d-flex">
-			    <ul class="pagination">
-			    <!-- ajax로 페이징바 추가될 자리 -->
-			    </ul>
-			</nav>
-			<!-- 페이징바 영역 끝 -->
+				<!-- 페이징바 영역 -->
+				<nav class="blog-pagination justify-content-center d-flex">
+			    	<ul class="pagination">
+			    	<!-- ajax로 페이징바 추가될 자리 -->
+			    	</ul>
+				</nav>
+				<!-- 페이징바 영역 끝 -->
+			</div>
+    	    <!-- 댓글 리스트 끝 -->
 
-		</div>
-        <!-- 댓글 리스트 끝 -->
-
-   		<hr>
-        <br>
-        <div style="width:1140px" align="right">
-            <a href="<%= contextPath %>/list.ch?cpage=1" class="btn_list">목록</a>
-        </div>
-            
+	   		<hr><br>
+    	    <div style="width:1140px" align="right">
+        	    <a href="<%= contextPath %>/list.ch?cpage=1" class="btn_list">목록</a>
+        	</div>
         </div>
     </section>
     
@@ -187,8 +179,6 @@
     	
     	// 댓글 등록
     	function insertCmnt(){
-    		
-    		console.log($("#cmntContent").val());
     		
     		if($("#cmntContent").val() == ''){
     			alert("내용을 입력해 주세요");
@@ -229,34 +219,40 @@
     				// 댓글
     				let value = "";
     				for(let i=0; i<list.length; i++) {
-    					console.log(list[i]);
+    					
     					value += "<div class='comment-list'>"
-    						   + "<div class='single-comment justify-content-between d-flex'>"
-		    				   + "<div class='user justify-content-between d-flex'>"
-		    				   + "<div class='desc'>"
-		    				   + "<div class='d-flex justify-content-between'>"
-		    				   + "<div class='d-flex align-items-center'>"
-		    				   + "<h5>"
-		    				   + "<a>" + list[i].cmntWriter + "</a>"
-		    				   + "</h5>"
-		    				   + "<p class='date'>" + list[i].cmntEnrollDate + "</p>"
-		    				   + "</div></div>"
-		    				   + "<p class='comment'>" + list[i].cmntContent + "</p>"
-		    				   + "</div></div></div>";
+    						   + 	"<div class='single-comment justify-content-between d-flex'>"
+		    				   + 		"<div class='user justify-content-between d-flex'>"
+		    				   + 			"<div class='desc'>"
+		    				   + 				"<div class='d-flex justify-content-between'>"
+		    				   + 					"<div class='d-flex align-items-center'>"
+		    				   + 						"<h5>"
+		    				   + 							"<a>" + list[i].cmntWriter + "</a>"
+		    				   + 						"</h5>"
+		    				   + 						"<p class='date'>" + list[i].cmntEnrollDate + "</p>"
+		    				   + 					"</div>"
+		    				   +				"</div>"
+		    				   + 				"<p class='comment'>" + list[i].cmntContent + "</p>"
+		    				   + 			"</div>"
+		    				   +		"</div>"
+		    				   +	"</div>";
 		    				   
 		    			if(list[i].cmntStatus == 'Y'){
-		    				value +=  "<br><div class='single-comment justify-content-between d-flex' style='margin-left: 3%;'>"
-			    				   + "<div class='user justify-content-between d-flex'>"
-			    				   + "<div class='desc'>"
-			    				   + "<div class='d-flex justify-content-between'>"
-			    				   + "<div class='d-flex align-items-center'>"
-			    				   + "<h5>"
-			    				   + "<a>└ 얼스어스</a>"
-			    				   + "</h5>"
-			    				   + "<p class='date'></p>"
-			    				   + "</div></div>"
-			    				   + "<p class='comment'>안녕하세요. Earth.Us입니다! <br>챌린지 참여가 확인되어 적립금이 지급되었습니다.</p>"
-			    				   + "</div></div></div>";
+		    				value += "<br><div class='single-comment justify-content-between d-flex' style='margin-left: 3%;'>"
+			    				   + 	"<div class='user justify-content-between d-flex'>"
+			    				   + 		"<div class='desc'>"
+			    				   + 			"<div class='d-flex justify-content-between'>"
+			    				   + 				"<div class='d-flex align-items-center'>"
+			    				   + 					"<h5>"
+			    				   + 						"<a>└ 얼스어스</a>"
+			    				   + 					"</h5>"
+			    				   + 					"<p class='date'></p>"
+			    				   + 				"</div>"
+			    				   + 			"</div>"
+			    				   + 			"<p class='comment'>안녕하세요. Earth.Us입니다! <br>챌린지 참여가 확인되어 적립금이 지급되었습니다.</p>"
+			    				   + 		"</div>"
+			    				   + 	"</div>"
+			    				   + "</div>";
 		    			}	   
 
 		    			value += "</div>";

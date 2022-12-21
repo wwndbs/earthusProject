@@ -33,10 +33,10 @@
 	<div id="layoutSidenav">
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
-                    <br>
+                <div class="container-fluid px-4"><br>
                     <h3 class="mt-4" style="font-weight:bold;">콘텐츠 관리 > 수정</h3>
                     <hr><br>
+                    
                     <div class="enrollForm">
                         <form action="<%=contextPath%>/update.co" method="post" id="updateForm" enctype="multipart/form-data">
                         	<input type="hidden" name="no" value="<%= c.getCntNo() %>">
@@ -44,26 +44,21 @@
                         	<input type="hidden" name="originFileNo" value="<%= at.getFileNo() %>" >
                         	
                             <p>제목</p>
-                            <input type="text" name="title" style="width:700px" required value="<%= c.getCntTitle() %>">
-                            <br><br>
+                            <input type="text" name="title" style="width:700px" required value="<%= c.getCntTitle() %>"><br><br>
 
                             <p>내용</p>
-                            <textarea name="content" id="summernote" rows="10" style="width:700px; resize: none;"><% if(c.getCntContent() != null) { %><%= c.getCntContent() %><% } %></textarea>
-                            <br><br>
+                            <textarea name="content" id="summernote" rows="10" style="width:700px; resize: none;"><% if(c.getCntContent() != null) { %><%= c.getCntContent() %><% } %></textarea><br><br>
 
                             <p>썸네일 이미지</p>
-                            <input type="file" name="file1" onchange="loadImg(this);">
-                            <br><br>
+                            <input type="file" name="file1" onchange="loadImg(this);"><br><br>
                             <div style="width:685px; text-align:center;">
                                 <img src="" id="thumbnailImg" width="685px" height="260px" onclick="chooseFile();"><br>
                                 <span>썸네일 미리보기</span>
-                            </div>
-                            <br>
+                            </div><br>
 
                             <p>게시글 내 이미지</p>
                             <input type="file" name="file2">
-                            <span>원본명 : <%= at.getOriginName() %></span>
-                            <br><br><br>
+                            <span>원본명 : <%= at.getOriginName() %></span><br><br><br>
                         
                             <button type="button" class="btn_admin_cancel" style="margin-left:2%" id="btn_cancle">취소</button>
                             <button type="button" class="btn_admin_enroll" data-bs-toggle="modal" data-bs-target="#jyModal_confirm">수정</button>
@@ -74,16 +69,16 @@
 		                            <div class="modal-content">
 		                                <!-- Modal Header -->
 		                                <div class="modal-header">
-		                                <button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
+		                                	<button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
 		                                </div>
 		                                <!-- Modal body -->
 		                                <div class="modal-body" style="text-align: center;">
-		                                수정하시겠습니까?
+		                                	수정하시겠습니까?
 		                                </div>
 		                                <!-- Modal footer -->
 		                                <div class="modal-footer">
-		                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
-		                                <button type="button" class="btn btn-dark" id="realUpdate">확인</button>
+		                                	<button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
+		                                	<button type="button" class="btn btn-dark" id="realUpdate">확인</button>
 		                                </div>
 		                            </div>
 		                        </div>
@@ -139,8 +134,7 @@
                                         ['insert', ['link', 'picture', 'video']],
                                         ['view', ['fullscreen', 'codeview', 'help']]
                                      	]
-                             		 });
-                                    
+                             		 })
                             </script>
                         </form>
                   </div>

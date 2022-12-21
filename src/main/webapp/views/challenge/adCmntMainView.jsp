@@ -42,8 +42,7 @@
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_content">
 			<main>
-				<div class="container-fluid px-4">
-					<br>
+				<div class="container-fluid px-4"><br>
 					<h3 class="mt-4" style="font-weight:bold;">챌린지 댓글 관리</h3>
 					<hr><br><br>
 					
@@ -70,8 +69,7 @@
 								</tr>
 							<% } %>
 						<% } %>
-					</table>
-					<br><br><br>
+					</table><br><br><br>
 						
 					<!-- 페이징바 영역 -->
 					<div class="paging-area" align="center">
@@ -88,29 +86,26 @@
 						<% } %>
 						
 						<% if(currentPage != maxPage) { %>
-						<button onclick="location.href='<%=contextPath%>/adCmntMain.ch?cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
+							<button onclick="location.href='<%=contextPath%>/adCmntMain.ch?cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
 						<% } %>
 					</div>
 					<!-- 페이징바 영역 끝 -->
 				        
-					 <script>
-						 $(function(){
-
+					<script>
+						$(function(){
 							 // 게시글 클릭시 해당 게시글 상세 댓글관리 페이지로 이동
 							 $(".list-area").click(function(){
 								 const challNo = $(this).children().eq(0).text(); // 클릭한 글 번호
 								 
 								 location.href = '<%=contextPath%>/adCmntDetail.ch?no='+ challNo + '&cpage=1';
 							 })                                                   
-
 						})
-					 </script>
+					</script>
  
 				</div>
 			</main>
- 
 		</div>
 	 </div>
-
+	 
 </body>
 </html>

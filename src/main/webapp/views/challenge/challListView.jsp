@@ -38,7 +38,6 @@
 		</div>
 	</section>
 
-
     <!--================Blog Area =================-->
     <section class="blog_area padding_top">
         <div class="container">

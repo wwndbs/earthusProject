@@ -56,8 +56,7 @@
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_content">
 			<main>
-				<div class="container-fluid px-4">
-					<br>
+				<div class="container-fluid px-4"><br>
 					<h3 class="mt-4" style="font-weight:bold;">챌린지 댓글 관리</h3>
 					<hr><br><br>
                     
@@ -78,8 +77,7 @@
                                 <option value="Y">지급완료</option>
                             </select>
                         </div>
-                    </div>
-					<br><br>
+                    </div><br><br>
 					
 					<table id="pointTable">
 						<thead>
@@ -101,9 +99,9 @@
 									<td colspan="6">존재하는 댓글이 없습니다.</td>
 								</tr>  	
 							<% } else { %>
-								   <% for(Comment cmnt : list) { %>
+								<% for(Comment cmnt : list) { %>
 									<tr class="list-area">
-										 <td>
+										<td>
 											<input type="checkbox" name="check" value="<%= cmnt.getCmntNo() %>">
 										</td>
 										<td><%= cmnt.getCmntNo() %></td>
@@ -128,8 +126,7 @@
 								<% } %>
 							<% } %>
 						</tbody>
-					</table>
-					<br><br>
+					</table><br><br>
 
 					<script>
 						// 포인트 지급
@@ -144,13 +141,12 @@
 							$.ajax({
 				    			url:"<%=contextPath%>/givePoint.ch",
 				    			data:{no:challNo, cmntNo:cmntNo, userName:userName, amount:amount},
-				    			success:function(result){ // 성공시 => 버튼 지급완료로 변경
+				    			context:this,
+				    			success:function(result){ // 성공시 => 버튼 지급완료로 변경하며 비활성화
 				    				
-				    				// 모든 버튼에 적용됨 ....
-				    				//$(".btn-dark").attr("value", "지급완료");
-				    				//$(".btn-dark").attr("style", "background:gray;");
-				    				//$(".btn-dark").attr("disabled", true);
-				    				location.reload();
+				    				$(this).text("지급완료");
+				    				$(this).attr("style", "background:gray;");
+				    				$(this).attr("disabled", true);
 				    				
 				    			}
 							})
@@ -158,71 +154,71 @@
 						})
 					</script>
 						
-				       <!-- 페이징바 영역 -->
-				       <div class="paging-area" align="center">
-				        	<% if(currentPage != 1) { %>
-				            	<button onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= pi.getCurrentPage()-1 %>';" class="btn btn_black">&lt;</button>
-							<% } %>
+					<!-- 페이징바 영역 -->
+					<div class="paging-area" align="center">
+						<% if(currentPage != 1) { %>
+				        	<button onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= pi.getCurrentPage()-1 %>';" class="btn btn_black">&lt;</button>
+						<% } %>
 							
-							<% for(int p=startPage; p<=endPage; p++) { %>
-					            <% if(p == currentPage){ %>
-					            	<button class="btn btn_gray" disabled><%= p %></button>
-					            <% }else { %>
-					            	<button class="btn btn_black" onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= p %>';"><%= p %></button>
-								<% } %>
+						<% for(int p=startPage; p<=endPage; p++) { %>
+							<% if(p == currentPage){ %>
+								<button class="btn btn_gray" disabled><%= p %></button>
+							<% }else { %>
+								<button class="btn btn_black" onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= p %>';"><%= p %></button>
 							<% } %>
+						<% } %>
 							
-							<% if(currentPage != maxPage) { %>
-				            <button onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
-				            <% } %>
-				       </div>
-				       <!-- 페이징바 영역 끝 -->
+						<% if(currentPage != maxPage) { %>
+							<button onclick="location.href='<%=contextPath%>/adCmntDetail.ch?no=<%= ch.getChallNo() %>&cpage=<%= pi.getCurrentPage()+1 %>';" class="btn btn_black">&gt;</button>
+						<% } %>
+					</div>
+					<!-- 페이징바 영역 끝 -->
 				        		        
-	                   <!-- 모달: 게시글 선택 안 했을 경우 -->
-	                    <div class="modal" id="jyModal_noCheck">
-	                        <div class="modal-dialog modal-dialog-centered">
-	                            <div class="modal-content">
-	                                <!-- Modal Header -->
-	                                <div class="modal-header">
+					<!-- 모달: 게시글 선택 안 했을 경우 -->
+					<div class="modal" id="jyModal_noCheck">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
 	                                <button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
-	                                </div>
-	                                <!-- Modal body -->
-	                                <div class="modal-body" style="text-align: center;">
+								</div>
+								<!-- Modal body -->
+								<div class="modal-body" style="text-align: center;">
 	                                삭제할 게시글을 선택해 주세요.
-	                                </div>
-	                                <!-- Modal footer -->
-	                                <div class="modal-footer">
+								</div>
+								<!-- Modal footer -->
+								<div class="modal-footer">
 	                                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">확인</button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <!-- 모달 끝 -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 모달 끝 -->
 	
-	                    <!-- 모달: 삭제 컨펌 -->
-	                    <div class="modal" id="jyModal_confirm">
-	                        <div class="modal-dialog modal-dialog-centered">
-	                            <div class="modal-content">
-	                                <!-- Modal Header -->
-	                                <div class="modal-header">
+					<!-- 모달: 삭제 컨펌 -->
+					<div class="modal" id="jyModal_confirm">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<!-- Modal Header -->
+								<div class="modal-header">
 	                                <button type="button" class="modal_close" data-bs-dismiss="modal" style="margin-left: 95%;">&times;</button>
-	                                </div>
-	                                <!-- Modal body -->
-	                                <div class="modal-body" style="text-align: center;">
+								</div>
+								<!-- Modal body -->
+								<div class="modal-body" style="text-align: center;">
 	                                정말 삭제하시겠습니까?
-	                                </div>
-	                                <!-- Modal footer -->
-	                                <div class="modal-footer">
+								</div>
+								<!-- Modal footer -->
+								<div class="modal-footer">
 	                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">취소</button>
 	                                <button type="button" class="btn btn-dark" id="realDelete">확인</button>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    <!-- 모달 끝 -->
+								</div>
+							</div>
+						</div>
+	                </div>
+					<!-- 모달 끝 -->
 				        
-					 <script>
-						 $(function(){
+					<script>
+						$(function(){
 							 // 목록 버튼
 							 $("#btn_back").click(function(){
 								 location.href = '<%=contextPath%>/adCmntMain.ch';
@@ -367,12 +363,10 @@
 							 })
 							 
 						 }
-						
-					 </script>
+					</script>
  
 				</div>
 			</main>
- 
 		</div>
 	 </div>
 

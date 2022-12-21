@@ -40,23 +40,20 @@
 
     <!--================Blog Area =================-->
     <section class="blog_area padding_top">
-        <div class="container">
-            <div class="row">
-                <br><br><br>
-                <div class="blog_left_sidebar" style="width: 100%;">
-                    
-                    <!-- 콘텐츠 게시글 리스트 -->
+		<div class="container">
+			<div class="row"><br><br><br>
+				<div class="blog_left_sidebar" style="width: 100%;">
+					<!-- 콘텐츠 게시글 리스트 -->
                     <% for(Contents c : list) { %>
 	                    <article class="blog_item">
                             <input type="hidden" value="<%= c.getCntNo() %>">
 	                        <div class="blog_item_img">
-	                            <img class="card-img rounded-0" src="<%= contextPath %>/<%= c.getCntThumbnail() %>" alt="" width="1370" height="520">
+	                        	<img class="card-img rounded-0" src="<%= contextPath %>/<%= c.getCntThumbnail() %>" alt="" width="1370" height="520">
 	                            <a href="#" class="blog_item_date">
 	                                <p>No.</p>
 	                                <h3><%= c.getCntNo() %></h3>
 	                            </a>
 	                        </div>
-	
 	                        <div class="blog_details">
 	                            <a class="d-inline-block">
 	                                <h2><%= c.getCntTitle() %></h2>
@@ -70,7 +67,7 @@
 	                            </ul>
 	                        </div>
 	                    </article>
-                    <% } %>
+					<% } %>
                     
 					<!-- 페이징바 영역 -->
                     <nav class="blog-pagination justify-content-center d-flex">
@@ -105,12 +102,10 @@
                         </ul>
                     </nav>
                     <!-- 페이징바 영역 끝 -->
-                    
                 </div>
             </div>     
         </div>
-    </section>
-    <br><br><br><br><br>           
+    </section><br><br><br><br><br>
 
     <script>
         $(function(){
@@ -121,7 +116,6 @@
     </script>
 
     <!--================Blog Area =================-->
-
 
 	<%@ include file="/views/common/footerbar.jsp" %>
 	

@@ -82,7 +82,7 @@
 		                     , USER_NAME
 		                     , POINT_AMOUNT
 		                     , POINT_BALANCE
-		                     , POINT_DATE
+		                     , TO_CHAR(POINT_DATE, 'YYYY-MM-DD') AS POINT_DATE
 		                  FROM POINT
 		                  JOIN MEMBER USING (USER_NO)
 						 WHERE USER_NO = ?
