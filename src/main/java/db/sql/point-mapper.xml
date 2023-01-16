@@ -104,8 +104,8 @@
 		     , USER_NO
 		     , POINT_TYPE
 		     , POINT_REASON
-             , POINT_AMOUNT
-             , POINT_BALANCE
+		     , POINT_AMOUNT
+		     , POINT_BALANCE
 		     )
 		VALUES
 		     (
@@ -113,17 +113,17 @@
 		     , ?
 		     , '적립'
 		     , ?
-             , ?
-             , (
-                SELECT *
-                FROM (
-                        SELECT SUM(POINT_AMOUNT) OVER(PARTITION BY USER_NO ORDER BY POINT_NO)
-                          FROM POINT
-                          WHERE USER_NO = ?
-                          ORDER BY POINT_NO DESC
-                          )
-                WHERE ROWNUM = 1
-             ) + ?
+		     , ?
+		     , (
+		     	SELECT *
+		     	  FROM (
+		     		SELECT SUM(POINT_AMOUNT) OVER(PARTITION BY USER_NO ORDER BY POINT_NO)
+		     		  FROM POINT
+		     		 WHERE USER_NO = ?
+		     		 ORDER BY POINT_NO DESC
+		     	        )
+		     	 WHERE ROWNUM = 1
+		     	) + ?
 		     )
 	</entry>
 	
@@ -135,8 +135,8 @@
 		     , USER_NO
 		     , POINT_TYPE
 		     , POINT_REASON
-             , POINT_AMOUNT
-             , POINT_BALANCE
+		     , POINT_AMOUNT
+		     , POINT_BALANCE
 		     )
 		VALUES
 		     (
@@ -144,20 +144,19 @@
 		     , ?
 		     , '회수'
 		     , ?
-             , ?
-             , (
-                SELECT *
-                FROM (
-                        SELECT SUM(POINT_AMOUNT) OVER(PARTITION BY USER_NO ORDER BY POINT_NO)
-                          FROM POINT
-                          WHERE USER_NO = ?
-                          ORDER BY POINT_NO DESC
-                          )
-                WHERE ROWNUM = 1
-             ) - ?
+		     , ?
+		     , (
+		     	SELECT *
+		     	  FROM (
+		     		SELECT SUM(POINT_AMOUNT) OVER(PARTITION BY USER_NO ORDER BY POINT_NO)
+		     		  FROM POINT
+		     		 WHERE USER_NO = ?
+		     		 ORDER BY POINT_NO DESC
+		     		)
+		     	 WHERE ROWNUM = 1
+		     	) - ?
 		     )
 	</entry>
 	
-
 
 </properties>
